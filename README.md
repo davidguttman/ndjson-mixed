@@ -44,4 +44,5 @@ Options:
   --help        Show help                                              [boolean]
   --version     Show version number                                    [boolean]
   --indent, -i  json indent size                                    [default: 0]
+  --clean, -c   filter non-json lines                           [default: false]
 ```

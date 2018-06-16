@@ -9,6 +9,11 @@ var argv = require('yargs')
     describe: 'json indent size',
     default: 0
   })
+  .option('clean', {
+    alias: 'c',
+    describe: 'filter non-json lines',
+    default: false
+  })
   .argv
 
 var indent = argv.indent
@@ -18,7 +23,10 @@ process.stdin
   .pipe(through(function (chunk, enc, cb) {
     var str = chunk.toString()
     var i = str.indexOf('{')
-    if (i < 0) return cb(null, chunk + '\n')
+    if (i < 0) {
+      if (argv.clean) return cb()
+      return cb(null, chunk + '\n')
+    }
 
     var json = str.slice(i)
     if (!indent) return cb(null, json + '\n')
