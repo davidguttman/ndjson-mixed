@@ -21,9 +21,16 @@ var argv = require('yargs')
     array: true,
     default: []
   })
+  .option('pick', {
+    alias: 'p',
+    describe: 'pick specific keys from objects',
+    array: true,
+    default: []
+  })
   .argv
 
 var omit = argv.omit
+var pick = argv.pick
 var indent = argv.indent
 
 process.stdin
@@ -37,10 +44,11 @@ process.stdin
     }
 
     var json = str.slice(i)
-    if (!indent && !omit.length) return cb(null, json + '\n')
+    if (!indent && !omit.length && !pick.length) return cb(null, json + '\n')
 
     var obj = JSON.parse(json)
     if (omit.length) obj = _.omit(obj, omit)
+    if (pick.length) obj = _.pick(obj, pick)
     cb(null, JSON.stringify(obj, null, indent) + '\n')
   }))
   .pipe(process.stdout)

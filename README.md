@@ -43,6 +43,13 @@ or to omit keys:
 {"name":"app-name","level":20,"time":"2018-06-16T15:48:21.298Z","ip":"1.2.3.4","method":"GET","url":"/some-path","responseTime":95,"statusCode":200,"version":"1.1.2","requestId":"cjihktnwz5zev10w0efpto0j3","v":1}
 ```
 
+or to pick keys:
+
+```
+⚡ deis logs | ndjson-mixed -p pid -p hostname
+{"pid":36,"hostname":"app-name-web-f4bb796f6-9tjwt"}
+```
+
 ### Options
 
 ```
@@ -53,4 +60,5 @@ Options:
   --indent, -i  json indent size                                    [default: 0]
   --clean, -c   filter non-json lines                           [default: false]
   --omit, -o    omit keys from objects                     [array] [default: []]
+  --pick, -p    pick specific keys from objects            [array] [default: []]
 ```
