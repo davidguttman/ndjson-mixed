@@ -36,6 +36,13 @@ or formatted:
 }
 ```
 
+or to omit keys:
+
+```
+⚡ deis logs | ndjson-mixed -o pid -o hostname
+{"name":"app-name","level":20,"time":"2018-06-16T15:48:21.298Z","ip":"1.2.3.4","method":"GET","url":"/some-path","responseTime":95,"statusCode":200,"version":"1.1.2","requestId":"cjihktnwz5zev10w0efpto0j3","v":1}
+```
+
 ### Options
 
 ```
@@ -45,4 +52,5 @@ Options:
   --version     Show version number                                    [boolean]
   --indent, -i  json indent size                                    [default: 0]
   --clean, -c   filter non-json lines                           [default: false]
+  --omit, -o    omit keys from objects                     [array] [default: []]
 ```

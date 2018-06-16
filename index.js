@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var _ = require('lodash')
 var split = require('split2')
 var through = require('through2')
 
@@ -14,8 +15,15 @@ var argv = require('yargs')
     describe: 'filter non-json lines',
     default: false
   })
+  .option('omit', {
+    alias: 'o',
+    describe: 'omit keys from objects',
+    array: true,
+    default: []
+  })
   .argv
 
+var omit = argv.omit
 var indent = argv.indent
 
 process.stdin
@@ -29,9 +37,10 @@ process.stdin
     }
 
     var json = str.slice(i)
-    if (!indent) return cb(null, json + '\n')
+    if (!indent && !omit.length) return cb(null, json + '\n')
 
     var obj = JSON.parse(json)
+    if (omit.length) obj = _.omit(obj, omit)
     cb(null, JSON.stringify(obj, null, indent) + '\n')
   }))
   .pipe(process.stdout)
