@@ -6,8 +6,7 @@
   "bin": {
     "ndjson-mixed": "./index.js"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [],
   "author": "David Guttman <david@guttman.io> (http://davidguttman.com/)",
   "license": "MIT",
@@ -16,5 +15,14 @@
     "split2": "^2.2.0",
     "through2": "^2.0.3",
     "yargs": "^11.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidguttman/ndjson-mixed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davidguttman/ndjson-mixed/issues"
+  },
+  "homepage": "https://github.com/davidguttman/ndjson-mixed#readme"
 }
