@@ -1,0 +1,20 @@
+{
+  "name": "ndjson-mixed",
+  "version": "1.0.1",
+  "description": "CLI tool to format \"mixed\" ndjson streams",
+  "main": "index.js",
+  "bin": {
+    "ndjson-mixed": "./index.js"
+  },
+  "scripts": {
+  },
+  "keywords": [],
+  "author": "David Guttman <david@guttman.io> (http://davidguttman.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "ndjson": "^1.5.0",
+    "split2": "^2.2.0",
+    "through2": "^2.0.3",
+    "yargs": "^11.0.0"
+  }
+}
